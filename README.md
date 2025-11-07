@@ -11,7 +11,7 @@
 
 它的特点包括：  
 
-- 支持 **backbone 与 head 层**的分组展示  
+- 支持 **backbone、neck 与 head 层**的分组展示  
 - 自动解析各模块 **输入输出通道**  
 - 支持 **Concat 输出通道自动计算**  
 - 支持 **竖版布局**，**直角边**，便于论文和文档展示  
@@ -26,13 +26,25 @@
    读取模型 YAML 文件，自动解析每一层的模块类型、重复次数、输入输出通道及参数。  
 
 2. **自动生成 Graphviz 图**  
-   - Backbone 和 Head 自动分组  
+   - Backbone、Neck 和 Head 自动分组  
    - 支持竖版 Top→Bottom 展示  
    - 线条直角连接，整洁美观  
    - 支持输出 SVG 或 PNG 格式  
 
 3. **模块兼容**  
    支持所有常见模块。  
+
+---
+
+## 效果
+<details>
+<summary>点击展开查看效果图</summary>
+
+<div align="center">
+<img src="./yolov8_model_graph.svg" alt="banner" width="500">
+</div>
+
+</details>
 
 ---
 
