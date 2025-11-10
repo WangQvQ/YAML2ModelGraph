@@ -161,7 +161,90 @@ Edges 使用直角线显示，保证图像整洁美观。Backbone / Neck / Head 
 Mermaid 版本的单个节点典型形式（具体字段可配置）：
 
 ```mermaid
+flowchart LR
+    %% YAML -> Model 3-column graph
+    Input(("Input<br>C=3")):::input
+    subgraph Backbone
+        direction TB
+        L0["Conv"]:::backbone
+        L1["Conv"]:::backbone
+        L2["C3k2"]:::backbone
+        L3["Conv"]:::backbone
+        L4["C3k2"]:::backbone
+        L5["Conv"]:::backbone
+        L6["C3k2"]:::backbone
+        L7["Conv"]:::backbone
+        L8["C3k2"]:::backbone
+        L9["SPPF"]:::backbone
+        L10["C2PSA"]:::backbone
+    end
 
+    subgraph Neck
+        direction TB
+        L11["nn.Upsample"]:::neck
+        L12["Concat"]:::neck
+        L13["C3k2"]:::neck
+        L14["nn.Upsample"]:::neck
+        L15["Concat"]:::neck
+        L16["C3k2"]:::neck
+        L17["Conv"]:::neck
+        L18["Concat"]:::neck
+        L19["C3k2"]:::neck
+        L20["Conv"]:::neck
+        L21["Concat"]:::neck
+        L22["C3k2"]:::neck
+    end
+
+    subgraph Head
+        direction TB
+        L23["Detect"]:::head
+    end
+
+    T1((" ")):::invis
+    T2((" ")):::invis
+    T3((" ")):::invis
+
+    T1 --- L0
+    T2 --- L11
+    T3 --- L23
+    Input --> L0
+    L0 --> L1
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+    L5 --> L6
+    L6 --> L7
+    L7 --> L8
+    L8 --> L9
+    L9 --> L10
+    L10 --> L11
+    L11 --> L12
+    L6 --> L12
+    L12 --> L13
+    L13 --> L14
+    L14 --> L15
+    L4 --> L15
+    L15 --> L16
+    L16 --> L17
+    L17 --> L18
+    L13 --> L18
+    L18 --> L19
+    L19 --> L20
+    L20 --> L21
+    L10 --> L21
+    L21 --> L22
+    L16 --> L23
+    L19 --> L23
+    L22 --> L23
+
+    linkStyle 0,1,2 stroke:none
+
+    classDef backbone fill:#C2E7D9,stroke:#2F4F4F,stroke-width:1px;
+    classDef neck fill:#FFD6A5,stroke:#2F4F4F,stroke-width:1px;
+    classDef head fill:#FFB5A7,stroke:#2F4F4F,stroke-width:1px;
+    classDef input fill:#FFF0B3,stroke:#555,stroke-width:1px;
+    classDef invis fill:none,stroke:none;
 ```
 
 你可以通过脚本配置：
