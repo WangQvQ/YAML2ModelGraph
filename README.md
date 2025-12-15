@@ -101,9 +101,9 @@ v1.0 版本提供 **9 种精心设计的主题**，适用于不同场景：
 **场景：** 专为 IEEE / CVPR / 毕业论文插图设计，打印效果最好
 
 
-``````bash
+```bash
 python main.py examples/yolov8.yaml svg/graph_paper.svg --theme paper
-
+```
 ### 2. 现代糖果风 (Candy)
 
 **特点：** 莫兰迪色系（淡蓝/淡橙）、大圆角、无衬线字体  
