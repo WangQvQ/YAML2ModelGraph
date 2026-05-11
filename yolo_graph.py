@@ -50,7 +50,8 @@ class SVGBuilder:
         '''
 
     def get_header(self):
-        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.width} {self.height}">
+        return f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.width} {self.height}">
         <style>
             text {{ font-family: "{self.config['font']}"; }}
         </style>
@@ -116,7 +117,7 @@ class SVGBuilder:
 
 
 def parse_and_layout(yaml_path, out_file, config, display_config):
-    with open(yaml_path, 'r') as f: d = yaml.safe_load(f)
+    with open(yaml_path, 'r', encoding='utf-8') as f: d = yaml.safe_load(f)
     full_seq = d.get('backbone', []) + d.get('head', [])
     backbone_len = len(d.get('backbone', []))
     
@@ -316,4 +317,5 @@ def parse_and_layout(yaml_path, out_file, config, display_config):
     svg.add_bg_lane(config["lane_width_bb"], head_start_x - config["lane_width_bb"], svg.height, "Neck", config["colors"]["bg_neck"])
     svg.add_bg_lane(head_start_x, config["lane_width_head"], svg.height, "Head", config["colors"]["bg_head"])
 
-    with open(out_file, 'w') as f: f.write(svg.generate())
+    with open(out_file, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(svg.generate())
