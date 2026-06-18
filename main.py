@@ -2,7 +2,7 @@
 """
 YOLO Graph Generator v2.0
 Usage:
-    python main.py model.yaml [output.svg] [--theme paper|pro|candy|dark]
+    python main.py model.yaml [output.svg] [--theme NAME] [--head single|multi]
 """
 
 import sys
@@ -20,16 +20,16 @@ DISPLAY_CONFIG = {
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python main.py model.yaml [output.svg] [--theme paper|pro|candy|dark]")
+        print("Usage: python main.py model.yaml [output.svg] [--theme NAME] [--head single|multi]")
         return
 
     yaml_path = sys.argv[1]
-    
+
     out_name = "yolo_graph.svg"
     if len(sys.argv) > 2 and not sys.argv[2].startswith("--"):
         out_name = sys.argv[2]
         if not out_name.endswith(".svg"): out_name += ".svg"
-    
+
     theme_name = "paper"
     if "--theme" in sys.argv:
         try:
@@ -37,11 +37,18 @@ def main():
             theme_name = sys.argv[idx + 1]
         except IndexError: pass
 
+    head_mode = "single"
+    if "--head" in sys.argv:
+        try:
+            idx = sys.argv.index("--head")
+            head_mode = sys.argv[idx + 1]
+        except IndexError: pass
+
     config = themes.get_config(theme_name)
-    
-    print(f"🎨 Theme: '{theme_name}' | 📊 Info: {DISPLAY_CONFIG}")
+
+    print(f"🎨 Theme: '{theme_name}' | 🧩 Head: {head_mode} | 📊 Info: {DISPLAY_CONFIG}")
     try:
-        yolo_graph.parse_and_layout(yaml_path, out_name, config, DISPLAY_CONFIG)
+        yolo_graph.parse_and_layout(yaml_path, out_name, config, DISPLAY_CONFIG, head_mode)
         print(f"✅ Saved to {out_name}")
     except Exception as e:
         print(f"❌ Error: {e}")

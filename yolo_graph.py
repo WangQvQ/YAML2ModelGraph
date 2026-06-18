@@ -116,7 +116,7 @@ class SVGBuilder:
         return self.get_header() + "\n".join(self.elements) + "</svg>"
 
 
-def parse_and_layout(yaml_path, out_file, config, display_config):
+def parse_and_layout(yaml_path, out_file, config, display_config, head_mode="single"):
     with open(yaml_path, 'r', encoding='utf-8') as f: d = yaml.safe_load(f)
     full_seq = d.get('backbone', []) + d.get('head', [])
     backbone_len = len(d.get('backbone', []))
@@ -215,13 +215,36 @@ def parse_and_layout(yaml_path, out_file, config, display_config):
             
         sub_text = " ".join(info_parts)
         if not sub_text: sub_text = "Layer"
-        
-        layers.append({
-            "idx": i, "label": label, "sub": sub_text,
-            "stride": int(next_stride), "col": col, 
-            "from": abs_from, "fill_id": fill_id, "is_concat": is_concat,
-            "type_color": type_color
-        })
+
+        # --- Detect 多头拆分：每个输入源生成一个独立的 Detect 节点 ---
+        if 'Detect' in m_str and len(abs_from) > 1 and head_mode == "multi":
+            scale_names = ["P3/8", "P4/16", "P5/32", "P6/64"]
+            for si, src_idx in enumerate(abs_from):
+                scale = scale_names[si] if si < len(scale_names) else f"P{si+3}/?"
+                src_stride = layers[src_idx]["stride"] if src_idx < len(layers) else (8 * (2 ** si))
+                detect_label = f"Detect ({scale})"
+                src_ch = layer_channels.get(src_idx, c1)
+                detect_parts = []
+                if display_config.get("show_channels", True):
+                    detect_parts.append(f"{src_ch}c")
+                if display_config.get("show_stride", True):
+                    detect_parts.append(f"/{src_stride}x")
+                detect_sub = " ".join(detect_parts) if detect_parts else "Head"
+                detect_coord_key = f"{i}_d{si}"
+                layers.append({
+                    "idx": i, "detect_idx": detect_coord_key,
+                    "label": detect_label, "sub": detect_sub,
+                    "stride": src_stride, "col": 2,
+                    "from": [src_idx], "fill_id": "grad_head",
+                    "is_concat": False, "type_color": config["type_colors"]["Detect"]
+                })
+        else:
+            layers.append({
+                "idx": i, "label": label, "sub": sub_text,
+                "stride": int(next_stride), "col": col,
+                "from": abs_from, "fill_id": fill_id, "is_concat": is_concat,
+                "type_color": type_color
+            })
         ch.append(c2)
         curr_stride = next_stride
 
@@ -236,7 +259,8 @@ def parse_and_layout(yaml_path, out_file, config, display_config):
         center_x = config["lane_width_bb"] / 2
         props = svg.add_rect(center_x - config["node_w"]/2, current_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
         props['col'] = 0; props['neck_col_id'] = -1
-        coords[l['idx']] = props
+        coord_key = l.get('detect_idx', l['idx'])
+        coords[coord_key] = props
         current_y += config["bb_step"]
     max_bb_y = current_y - config["bb_step"] + config["node_h"]
     
@@ -262,29 +286,45 @@ def parse_and_layout(yaml_path, out_file, config, display_config):
         for l in items:
             props = svg.add_rect(center_x - config["node_w"]/2, curr_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
             props['col'] = 1; props['neck_col_id'] = c_id
-            coords[l['idx']] = props
+            coord_key = l.get('detect_idx', l['idx'])
+            coords[coord_key] = props
             curr_y += config["neck_step"]
         actual_neck_width = base_x + config["lane_width_neck_col"]
 
     # Head
     head_items = [l for l in layers if l['col'] == 2]
-    head_start_x = actual_neck_width 
-    head_curr_y = neck_start_y
-    for l in head_items:
-        center_x = head_start_x + config["lane_width_head"] / 2
-        src_ys = [coords[s]['rect'][1] for s in l['from'] if s in coords]
-        target_y = sum(src_ys)/len(src_ys) if src_ys else head_curr_y
-        if target_y < head_curr_y: target_y = head_curr_y
-        
-        props = svg.add_rect(center_x - config["node_w"]/2, target_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
-        props['col'] = 2; props['neck_col_id'] = 99
-        coords[l['idx']] = props
-        head_curr_y = target_y + config["neck_step"]
+    head_start_x = actual_neck_width + config["col_gap"]
+
+    if head_mode == "multi":
+        # 多头模式：从最底部往上堆叠，最底下一个和底部模块对齐
+        bottom_y = max((v['rect'][1] + v['rect'][3] for v in coords.values()), default=max_bb_y)
+        head_y = bottom_y - config["node_h"] - (len(head_items) - 1) * config["neck_step"]
+        for l in head_items:
+            center_x = head_start_x + config["lane_width_head"] / 2
+            coord_key = l.get('detect_idx', l['idx'])
+            props = svg.add_rect(center_x - config["node_w"]/2, head_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
+            props['col'] = 2; props['neck_col_id'] = 99
+            coords[coord_key] = props
+            head_y += config["neck_step"]
+    else:
+        # 单头模式：Detect 节点居中于输入源的平均 y 坐标
+        head_curr_y = neck_start_y
+        for l in head_items:
+            center_x = head_start_x + config["lane_width_head"] / 2
+            coord_key = l.get('detect_idx', l['idx'])
+            src_ys = [coords[s]['rect'][1] for s in l['from'] if s in coords]
+            target_y = sum(src_ys)/len(src_ys) if src_ys else head_curr_y
+            if target_y < head_curr_y: target_y = head_curr_y
+            props = svg.add_rect(center_x - config["node_w"]/2, target_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
+            props['col'] = 2; props['neck_col_id'] = 99
+            coords[coord_key] = props
+            head_curr_y = target_y + config["neck_step"]
 
     # Routing
     for l in layers:
-        if l['idx'] not in coords: continue
-        dst = coords[l['idx']]
+        coord_key = l.get('detect_idx', l['idx'])
+        if coord_key not in coords: continue
+        dst = coords[coord_key]
         for src_idx in l['from']:
             if src_idx not in coords: continue
             src = coords[src_idx]
@@ -310,9 +350,15 @@ def parse_and_layout(yaml_path, out_file, config, display_config):
             
             svg.add_link(start_pt, end_pt, dashed, routing)
 
+    # 计算所有节点的最大 y 坐标（包括 Head 区域的 Detect 节点）
+    max_all_y = max_bb_y
+    for v in coords.values():
+        node_bottom = v['rect'][1] + v['rect'][3]
+        if node_bottom > max_all_y: max_all_y = node_bottom
+
     # Output
     total_w = head_start_x + config["lane_width_head"]
-    svg.width = total_w; svg.height = max_bb_y + 50
+    svg.width = total_w; svg.height = max_all_y + 50
     svg.add_bg_lane(0, config["lane_width_bb"], svg.height, "Backbone", config["colors"]["bg_backbone"])
     svg.add_bg_lane(config["lane_width_bb"], head_start_x - config["lane_width_bb"], svg.height, "Neck", config["colors"]["bg_neck"])
     svg.add_bg_lane(head_start_x, config["lane_width_head"], svg.height, "Head", config["colors"]["bg_head"])

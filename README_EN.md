@@ -18,6 +18,7 @@
 ### ✨ Key Features
 
 - 🎨 **9 Beautiful Themes**: From academic paper style to modern candy colors, meeting different scenario needs
+- 🧩 **Dual Head Modes**: Single head (`single`) and triple head (`multi`) Detect display modes
 - 📐 **Smart Layout**: Automatically identifies Backbone, Neck, and Head modules with intelligent multi-column folding
 - 🔗 **Clear Connections**: Supports multiple connection styles (straight lines, Bézier curves, Manhattan routing)
 - 📊 **Rich Information**: Displays module types, stride, channel numbers, and other key information
@@ -25,11 +26,45 @@
 
 ---
 
+## 🧩 Single Head vs Triple Head
+
+Use the `--head` parameter to switch between Detect display modes:
+
+| Mode | Parameter | Description |
+|:---:|:---:|:---|
+| **Single** | `--head single` | Default mode, Detect shown as a single node |
+| **Triple** | `--head multi` | Detect split into P3/8, P4/16, P5/32 as separate nodes, bottom-aligned |
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><b>--head single</b> (default)</td>
+<td align="center"><b>--head multi</b> (triple)</td>
+</tr>
+<tr>
+<td><img src="svg/graph_paper.svg" width="420"/></td>
+<td><img src="svg/multi/graph_paper.svg" width="420"/></td>
+</tr>
+</table>
+
+</div>
+
+```bash
+# Single head mode (default)
+python main.py examples/yolo26.yaml output.svg
+
+# Triple head mode
+python main.py examples/yolo26.yaml output.svg --head multi
+```
+
+---
+
 ## 🖼️ Theme Showcase
 
 <div align="center">
 
-### 9 Theme Styles Overview
+### 9 Theme Styles Overview (Single Head)
 
 <table>
 <tr>
@@ -64,7 +99,42 @@
 </tr>
 </table>
 
-> 💡 **Tip**: All theme SVG files are located in the `svg/` directory and can be viewed directly or used in papers/documents
+### 9 Theme Styles Overview (Triple Head)
+
+<table>
+<tr>
+<td align="center"><b>Paper</b><br/>Academic Standard</td>
+<td align="center"><b>Candy</b><br/>Modern Candy</td>
+<td align="center"><b>Dark</b><br/>Dark Geek</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_paper.svg" width="300"/></td>
+<td><img src="svg/multi/graph_candy.svg" width="300"/></td>
+<td><img src="svg/multi/graph_dark.svg" width="300"/></td>
+</tr>
+<tr>
+<td align="center"><b>Ocean</b><br/>Tech Ocean</td>
+<td align="center"><b>Retro</b><br/>Retro Warm</td>
+<td align="center"><b>Blueprint</b><br/>Engineering Blueprint</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_ocean.svg" width="300"/></td>
+<td><img src="svg/multi/graph_retro.svg" width="300"/></td>
+<td><img src="svg/multi/graph_blueprint.svg" width="300"/></td>
+</tr>
+<tr>
+<td align="center"><b>Forest</b><br/>Forest Nature</td>
+<td align="center"><b>Paper RYB</b><br/>Academic RYB ⭐</td>
+<td align="center"><b>Journal</b><br/>Modern Journal</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_forest.svg" width="300"/></td>
+<td><img src="svg/multi/graph_paper_ryb.svg" width="300"/></td>
+<td><img src="svg/multi/graph_journal.svg" width="300"/></td>
+</tr>
+</table>
+
+> 💡 **Tip**: All SVG files are located in `svg/` (single head) and `svg/multi/` (triple head) directories, viewable directly or usable in papers/documents
 
 </div>
 
@@ -81,19 +151,20 @@ pip install pyyaml
 ### Basic Usage
 
 ```bash
-python main.py examples/yolov8.yaml output.svg --theme paper
+python main.py examples/yolo26.yaml output.svg --theme paper
 ```
 
 **Parameters:**
-- `examples/yolov8.yaml`: Input YAML model configuration file
+- `examples/yolo26.yaml`: Input YAML model configuration file
 - `output.svg`: Output SVG file path (optional, defaults to `yolo_graph.svg`)
 - `--theme paper`: Select theme style (optional, defaults to `paper`)
+- `--head single`: Select head display mode (optional, defaults to `single`; set to `multi` for three separate Detect heads)
 
 ---
 
 ## 🎨 Theme Styles
 
-v1.0 provides **9 carefully designed themes** for different scenarios:
+**9 carefully designed themes** for different scenarios:
 
 ### 1. Academic Standard (Paper) - Default Theme
 
@@ -101,7 +172,7 @@ v1.0 provides **9 carefully designed themes** for different scenarios:
 **Use Case:** Designed specifically for IEEE / CVPR / thesis illustrations, best print quality
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_paper.svg --theme paper
+python main.py examples/yolo26.yaml svg/graph_paper.svg --theme paper
 ```
 
 ### 2. Modern Candy (Candy)
@@ -110,7 +181,7 @@ python main.py examples/yolov8.yaml svg/graph_paper.svg --theme paper
 **Use Case:** Suitable for PPT presentations, technical blogs, posters, visually vibrant and modern
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_candy.svg --theme candy
+python main.py examples/yolo26.yaml svg/graph_candy.svg --theme candy
 ```
 
 ### 3. Dark Geek (Dark)
@@ -119,7 +190,7 @@ python main.py examples/yolov8.yaml svg/graph_candy.svg --theme candy
 **Use Case:** Suitable for dark mode reading, screen presentations, showcasing "hardcore" technical feel
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_dark.svg --theme dark
+python main.py examples/yolo26.yaml svg/graph_dark.svg --theme dark
 ```
 
 ### 4. Tech Ocean (Ocean)
@@ -128,7 +199,7 @@ python main.py examples/yolov8.yaml svg/graph_dark.svg --theme dark
 **Use Case:** Suitable for business presentations, tech company whitepapers
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_ocean.svg --theme ocean
+python main.py examples/yolo26.yaml svg/graph_ocean.svg --theme ocean
 ```
 
 ### 5. Retro Warm (Retro)
@@ -137,7 +208,7 @@ python main.py examples/yolov8.yaml svg/graph_ocean.svg --theme ocean
 **Use Case:** Suitable for long reading sessions (eye-friendly), documents pursuing retro artistic feel
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_retro.svg --theme retro
+python main.py examples/yolo26.yaml svg/graph_retro.svg --theme retro
 ```
 
 ### 6. Engineering Blueprint (Blueprint)
@@ -146,7 +217,7 @@ python main.py examples/yolov8.yaml svg/graph_retro.svg --theme retro
 **Use Case:** Showcasing "architecture design" and "underlying logic" in hardcore engineering diagrams
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_blueprint.svg --theme blueprint
+python main.py examples/yolo26.yaml svg/graph_blueprint.svg --theme blueprint
 ```
 
 ### 7. Forest Nature (Forest)
@@ -155,7 +226,7 @@ python main.py examples/yolov8.yaml svg/graph_blueprint.svg --theme blueprint
 **Use Case:** Eye-friendly style, or for emphasizing environmental/lightweight themes
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_forest.svg --theme forest
+python main.py examples/yolo26.yaml svg/graph_forest.svg --theme forest
 ```
 
 ### 8. Academic RYB (Paper RYB) ⭐ Recommended
@@ -164,7 +235,7 @@ python main.py examples/yolov8.yaml svg/graph_forest.svg --theme forest
 **Use Case:** Suitable for paper illustrations that need clear distinction between Backbone/Neck/Head module structures
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_paper_ryb.svg --theme paper_ryb
+python main.py examples/yolo26.yaml svg/graph_paper_ryb.svg --theme paper_ryb
 ```
 
 ### 9. Modern Journal (Journal)
@@ -173,7 +244,7 @@ python main.py examples/yolov8.yaml svg/graph_paper_ryb.svg --theme paper_ryb
 **Use Case:** Suitable for Springer or Nature sub-journal chart styles
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_journal.svg --theme journal
+python main.py examples/yolo26.yaml svg/graph_journal.svg --theme journal
 ```
 
 ---
@@ -191,7 +262,9 @@ The tool automatically recognizes module types in YAML configurations, including
 
 - **Backbone**: Single-column vertical layout, clearly showing feature extraction flow
 - **Neck**: Intelligent multi-column folding, automatically splits into columns when modules are too many
-- **Head**: Automatically aligns based on input sources, maintaining visual coherence
+- **Head**:
+  - `single` mode: Detect node centered at the average y-coordinate of input sources
+  - `multi` mode: Split into Detect (P3/8), Detect (P4/16), Detect (P5/32) as separate nodes, stacked from the bottom, with the lowest node aligned to the Backbone/Neck bottom
 
 ### Connection Styles
 
@@ -237,20 +310,18 @@ YAML2ModelGraph/
 ├── README.md            # Project documentation (Chinese)
 ├── README_EN.md         # Project documentation (English)
 ├── examples/            # Example YAML files
-│   ├── yolov8.yaml
+│   ├── yolo26.yaml
 │   ├── yolo11.yaml
 │   ├── yolo12.yaml
 │   └── yolov9s.yaml
 └── svg/                 # Generated SVG examples
-    ├── graph_paper.svg
+    ├── graph_paper.svg          # Single head mode
     ├── graph_candy.svg
-    ├── graph_dark.svg
-    ├── graph_ocean.svg
-    ├── graph_retro.svg
-    ├── graph_blueprint.svg
-    ├── graph_forest.svg
-    ├── graph_paper_ryb.svg
-    └── graph_journal.svg
+    ├── ...
+    └── multi/                   # Triple head mode
+        ├── graph_paper.svg
+        ├── graph_candy.svg
+        └── ...
 ```
 
 ---
@@ -277,11 +348,6 @@ DISPLAY_CONFIG = {
 }
 ```
 
-**Usage Tips:**
-- If the generated diagram has too much text on nodes causing overflow, set `show_args` to `False`
-- For simple model visualization, you can disable some options to get a cleaner diagram
-- For detailed architecture analysis, you can enable all options to get complete information
-
 ### Supported YAML Format
 
 The tool is compatible with Ultralytics YOLO series YAML format:
@@ -297,12 +363,6 @@ head:
   - [[-1, 6], 1, Concat, [1]]
   # ...
 ```
-
----
-
-## 📸 Preview
-
-All theme example images are saved in the `svg/` directory. You can directly view the visual effects of different themes.
 
 ---
 
@@ -330,6 +390,5 @@ Thanks to the Ultralytics team for providing the YOLO framework and model defini
 
 ---
 
-**Version:** v1.0  
-**Last Updated:** 2024
-
+**Version:** v2.0  
+**Last Updated:** 2025

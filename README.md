@@ -13,11 +13,12 @@
 
 ## 📖 项目简介
 
-**YAML2ModelGrap** 是一个专业的 YOLO 模型架构可视化工具，能够将 Ultralytics YOLO 模型的 YAML 配置文件自动转换为精美的 SVG 架构图。
+**YAML2ModelGraph** 是一个专业的 YOLO 模型架构可视化工具，能够将 Ultralytics YOLO 模型的 YAML 配置文件自动转换为精美的 SVG 架构图。
 
 ### ✨ 核心特性
 
 - 🎨 **9 种精美主题**：从科研论文风到现代糖果色，满足不同场景需求
+- 🧩 **双模式 Head 展示**：支持单头（`single`）和三头（`multi`）两种 Detect 展示模式
 - 📐 **智能布局**：自动识别 Backbone、Neck、Head 三大模块，智能多列折叠
 - 🔗 **清晰连线**：支持多种连线样式（直线、贝塞尔曲线、曼哈顿路由）
 - 📊 **信息丰富**：显示模块类型、步长（stride）、通道数等关键信息
@@ -25,11 +26,45 @@
 
 ---
 
+## 🧩 单头 vs 三头
+
+通过 `--head` 参数切换 Detect 头的展示方式：
+
+| 模式 | 参数 | 说明 |
+|:---:|:---:|:---|
+| **单头** | `--head single` | 默认模式，Detect 显示为一个节点 |
+| **三头** | `--head multi` | Detect 拆分为 P3/8、P4/16、P5/32 三个独立节点，底部对齐 |
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><b>--head single</b>（默认）</td>
+<td align="center"><b>--head multi</b>（三头）</td>
+</tr>
+<tr>
+<td><img src="svg/graph_paper.svg" width="420"/></td>
+<td><img src="svg/multi/graph_paper.svg" width="420"/></td>
+</tr>
+</table>
+
+</div>
+
+```bash
+# 单头模式（默认）
+python main.py examples/yolo26.yaml output.svg
+
+# 三头模式
+python main.py examples/yolo26.yaml output.svg --head multi
+```
+
+---
+
 ## 🖼️ 主题展示
 
 <div align="center">
 
-### 9 种主题风格一览
+### 9 种主题风格一览（单头模式）
 
 <table>
 <tr>
@@ -64,7 +99,42 @@
 </tr>
 </table>
 
-> 💡 **提示**：所有主题的完整 SVG 文件位于 `svg/` 目录，可直接查看或用于论文/文档
+### 9 种主题风格一览（三头模式）
+
+<table>
+<tr>
+<td align="center"><b>Paper</b><br/>科研标准风</td>
+<td align="center"><b>Candy</b><br/>现代糖果风</td>
+<td align="center"><b>Dark</b><br/>暗黑极客风</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_paper.svg" width="300"/></td>
+<td><img src="svg/multi/graph_candy.svg" width="300"/></td>
+<td><img src="svg/multi/graph_dark.svg" width="300"/></td>
+</tr>
+<tr>
+<td align="center"><b>Ocean</b><br/>科技海洋风</td>
+<td align="center"><b>Retro</b><br/>复古暖阳风</td>
+<td align="center"><b>Blueprint</b><br/>工程蓝图风</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_ocean.svg" width="300"/></td>
+<td><img src="svg/multi/graph_retro.svg" width="300"/></td>
+<td><img src="svg/multi/graph_blueprint.svg" width="300"/></td>
+</tr>
+<tr>
+<td align="center"><b>Forest</b><br/>森林氧吧风</td>
+<td align="center"><b>Paper RYB</b><br/>学术三原色 ⭐</td>
+<td align="center"><b>Journal</b><br/>现代期刊风</td>
+</tr>
+<tr>
+<td><img src="svg/multi/graph_forest.svg" width="300"/></td>
+<td><img src="svg/multi/graph_paper_ryb.svg" width="300"/></td>
+<td><img src="svg/multi/graph_journal.svg" width="300"/></td>
+</tr>
+</table>
+
+> 💡 **提示**：所有 SVG 文件位于 `svg/`（单头）和 `svg/multi/`（三头）目录，可直接查看或用于论文/文档
 
 </div>
 
@@ -81,36 +151,37 @@ pip install pyyaml
 ### 基本使用
 
 ```bash
-python main.py examples/yolov8.yaml output.svg --theme paper
+python main.py examples/yolo26.yaml output.svg --theme paper
 ```
 
 **参数说明：**
-- `examples/yolov8.yaml`：输入的 YAML 模型配置文件
+- `examples/yolo26.yaml`：输入的 YAML 模型配置文件
 - `output.svg`：输出的 SVG 文件路径（可选，默认为 `yolo_graph.svg`）
 - `--theme paper`：选择主题风格（可选，默认为 `paper`）
+- `--head single`：选择 Head 展示模式（可选，默认为 `single`；设为 `multi` 可显示三个独立 Detect 头）
 
 ---
 
 ## 🎨 主题风格
 
-v1.0 版本提供 **9 种精心设计的主题**，适用于不同场景：
+提供 **9 种精心设计的主题**，适用于不同场景：
 
 ### 1. 科研标准风 (Paper) - 默认主题
 
 **特点：** 黑白灰配色、Times New Roman 字体、极简线条  
 **场景：** 专为 IEEE / CVPR / 毕业论文插图设计，打印效果最好
 
-
 ```bash
-python main.py examples/yolov8.yaml svg/graph_paper.svg --theme paper
+python main.py examples/yolo26.yaml svg/graph_paper.svg --theme paper
 ```
+
 ### 2. 现代糖果风 (Candy)
 
 **特点：** 莫兰迪色系（淡蓝/淡橙）、大圆角、无衬线字体  
 **场景：** 适合 PPT 演示、技术博客、海报，视觉效果活泼现代
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_candy.svg --theme candy
+python main.py examples/yolo26.yaml svg/graph_candy.svg --theme candy
 ```
 
 ### 3. 暗黑极客风 (Dark)
@@ -119,7 +190,7 @@ python main.py examples/yolov8.yaml svg/graph_candy.svg --theme candy
 **场景：** 适合深色模式阅读、屏幕演示、体现"硬核"技术感
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_dark.svg --theme dark
+python main.py examples/yolo26.yaml svg/graph_dark.svg --theme dark
 ```
 
 ### 4. 科技海洋风 (Ocean)
@@ -128,7 +199,7 @@ python main.py examples/yolov8.yaml svg/graph_dark.svg --theme dark
 **场景：** 适合商务汇报、科技公司技术白皮书
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_ocean.svg --theme ocean
+python main.py examples/yolo26.yaml svg/graph_ocean.svg --theme ocean
 ```
 
 ### 5. 复古暖阳风 (Retro)
@@ -137,7 +208,7 @@ python main.py examples/yolov8.yaml svg/graph_ocean.svg --theme ocean
 **场景：** 适合长时间阅读（护眼）、追求复古文艺感的文档
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_retro.svg --theme retro
+python main.py examples/yolo26.yaml svg/graph_retro.svg --theme retro
 ```
 
 ### 6. 工程蓝图风 (Blueprint)
@@ -146,7 +217,7 @@ python main.py examples/yolov8.yaml svg/graph_retro.svg --theme retro
 **场景：** 体现"架构设计"、"底层逻辑"的硬核工程图
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_blueprint.svg --theme blueprint
+python main.py examples/yolo26.yaml svg/graph_blueprint.svg --theme blueprint
 ```
 
 ### 7. 森林氧吧风 (Forest)
@@ -155,7 +226,7 @@ python main.py examples/yolov8.yaml svg/graph_blueprint.svg --theme blueprint
 **场景：** 护眼风格，或用于强调环保/轻量化的主题
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_forest.svg --theme forest
+python main.py examples/yolo26.yaml svg/graph_forest.svg --theme forest
 ```
 
 ### 8. 学术三原色风 (Paper RYB) ⭐ 推荐
@@ -164,7 +235,7 @@ python main.py examples/yolov8.yaml svg/graph_forest.svg --theme forest
 **场景：** 适合需要清晰区分 Backbone/Neck/Head 三大模块结构的论文插图
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_paper_ryb.svg --theme paper_ryb
+python main.py examples/yolo26.yaml svg/graph_paper_ryb.svg --theme paper_ryb
 ```
 
 ### 9. 现代期刊风 (Journal)
@@ -173,7 +244,7 @@ python main.py examples/yolov8.yaml svg/graph_paper_ryb.svg --theme paper_ryb
 **场景：** 适合 Springer 或 Nature 子刊的图表风格
 
 ```bash
-python main.py examples/yolov8.yaml svg/graph_journal.svg --theme journal
+python main.py examples/yolo26.yaml svg/graph_journal.svg --theme journal
 ```
 
 ---
@@ -191,7 +262,9 @@ python main.py examples/yolov8.yaml svg/graph_journal.svg --theme journal
 
 - **Backbone**：单列垂直布局，清晰展示特征提取流程
 - **Neck**：智能多列折叠，当模块过多时自动分列显示
-- **Head**：根据输入源自动对齐，保持视觉连贯性
+- **Head**：
+  - `single` 模式：Detect 节点居中于输入源的平均 y 坐标
+  - `multi` 模式：拆分为 Detect (P3/8)、Detect (P4/16)、Detect (P5/32) 三个独立节点，从底部往上堆叠，最底下一个与 Backbone/Neck 底部对齐
 
 ### 连线样式
 
@@ -234,22 +307,21 @@ YAML2ModelGraph/
 ├── main.py              # 主程序入口
 ├── yolo_graph.py        # 核心解析和布局逻辑
 ├── themes.py            # 主题配置定义
-├── README.md            # 项目文档
+├── README.md            # 项目文档（中文）
+├── README_EN.md         # 项目文档（英文）
 ├── examples/            # 示例 YAML 文件
-│   ├── yolov8.yaml
+│   ├── yolo26.yaml
 │   ├── yolo11.yaml
 │   ├── yolo12.yaml
 │   └── yolov9s.yaml
 └── svg/                 # 生成的 SVG 示例
-    ├── graph_paper.svg
+    ├── graph_paper.svg          # 单头模式示例
     ├── graph_candy.svg
-    ├── graph_dark.svg
-    ├── graph_ocean.svg
-    ├── graph_retro.svg
-    ├── graph_blueprint.svg
-    ├── graph_forest.svg
-    ├── graph_paper_ryb.svg
-    └── graph_journal.svg
+    ├── ...
+    └── multi/                   # 三头模式示例
+        ├── graph_paper.svg
+        ├── graph_candy.svg
+        └── ...
 ```
 
 ---
@@ -276,11 +348,6 @@ DISPLAY_CONFIG = {
 }
 ```
 
-**使用建议：**
-- 如果生成的图表中节点文字过多导致溢出，可以将 `show_args` 设为 `False`
-- 对于简单的模型可视化，可以关闭部分选项以获得更简洁的图表
-- 对于详细的架构分析，可以全部开启以获得完整信息
-
 ### 支持的 YAML 格式
 
 工具兼容 Ultralytics YOLO 系列的 YAML 格式：
@@ -296,12 +363,6 @@ head:
   - [[-1, 6], 1, Concat, [1]]
   # ...
 ```
-
----
-
-## 📸 效果预览
-
-所有主题的示例图已保存在 `svg/` 目录下，您可以直接查看不同主题的视觉效果。
 
 ---
 
@@ -329,4 +390,5 @@ head:
 
 ---
 
-**版本：** v1.0  
+**版本：** v2.0  
+**最后更新：** 2025
