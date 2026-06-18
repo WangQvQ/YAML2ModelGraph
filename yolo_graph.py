@@ -278,17 +278,25 @@ def parse_and_layout(yaml_path, out_file, config, display_config, head_mode="sin
         neck_curr_y += config["neck_step"]
         
     actual_neck_width = 0
+    # 计算可用高度（Backbone 底部 - 顶部）
+    available_h = max_bb_y - neck_start_y
     for c_id, items in enumerate(neck_cols_layout):
         if not items: continue
         base_x = config["lane_width_bb"] + c_id * (config["lane_width_neck_col"] + config["col_gap"])
         center_x = base_x + config["lane_width_neck_col"] / 2
+        # 动态计算间距，使该列底部与 Backbone 底部对齐
+        n = len(items)
+        if n > 1:
+            step = (max_bb_y - config["node_h"] - neck_start_y) / (n - 1)
+        else:
+            step = 0
         curr_y = neck_start_y
         for l in items:
             props = svg.add_rect(center_x - config["node_w"]/2, curr_y, config["node_w"], config["node_h"], l['fill_id'], l['label'], l['sub'], l['is_concat'], l['type_color'])
             props['col'] = 1; props['neck_col_id'] = c_id
             coord_key = l.get('detect_idx', l['idx'])
             coords[coord_key] = props
-            curr_y += config["neck_step"]
+            curr_y += step
         actual_neck_width = base_x + config["lane_width_neck_col"]
 
     # Head

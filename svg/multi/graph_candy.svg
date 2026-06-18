@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 1034">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 994.0000000000001">
         <style>
             text { font-family: "Arial, sans-serif"; }
         </style>
@@ -38,9 +38,9 @@
             </linearGradient>
         </defs>
         
-        <rect x="820" y="30" width="220" height="1004" fill="#F3F0F5" />
-<rect x="220" y="30" width="600" height="1004" fill="#FFF8F0" />
-<rect x="0" y="30" width="220" height="1004" fill="#F0F4F8" />
+        <rect x="820" y="30" width="220" height="964.0000000000001" fill="#F3F0F5" />
+<rect x="220" y="30" width="600" height="964.0000000000001" fill="#FFF8F0" />
+<rect x="0" y="30" width="220" height="964.0000000000001" fill="#F0F4F8" />
 <rect x="35.0" y="100" width="150" height="44" rx="6" fill="url(#grad_bb)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
 <clipPath id="clip_35_100"><rect x="35.0" y="100" width="150" height="44" rx="6" /></clipPath>
 <rect x="35.0" y="100" width="5" height="44" fill="#64B5F6" clip-path="url(#clip_35_100)" />
@@ -101,76 +101,76 @@
 <rect x="255.0" y="100" width="5" height="44" fill="#81C784" clip-path="url(#clip_255_100)" />
 <text x="332.0" y="114.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">nn.Upsample</text>
 <text x="332.0" y="133.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024c /16x</text>
-<rect x="255.0" y="220" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
-<clipPath id="clip_255_220"><rect x="255.0" y="220" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="220" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_220)" />
-<text x="332.0" y="234.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
-<text x="332.0" y="253.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024→1536 /16x</text>
-<rect x="255.0" y="340" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_255_340"><rect x="255.0" y="340" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="340" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_255_340)" />
-<text x="332.0" y="354.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
-<text x="332.0" y="373.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1536→512 n=2 /16x</text>
-<rect x="255.0" y="460" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_255_460"><rect x="255.0" y="460" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="460" width="5" height="44" fill="#81C784" clip-path="url(#clip_255_460)" />
-<text x="332.0" y="474.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">nn.Upsample</text>
-<text x="332.0" y="493.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /8x</text>
-<rect x="255.0" y="580" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
-<clipPath id="clip_255_580"><rect x="255.0" y="580" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="580" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_580)" />
-<text x="332.0" y="594.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
-<text x="332.0" y="613.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512→1024 /8x</text>
-<rect x="255.0" y="700" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_255_700"><rect x="255.0" y="700" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="700" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_255_700)" />
-<text x="332.0" y="714.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
-<text x="332.0" y="733.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024→256 n=2 /8x</text>
-<rect x="255.0" y="820" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_255_820"><rect x="255.0" y="820" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="820" width="5" height="44" fill="#64B5F6" clip-path="url(#clip_255_820)" />
-<text x="332.0" y="834.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Conv</text>
-<text x="332.0" y="853.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256c /16x</text>
-<rect x="255.0" y="940" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
-<clipPath id="clip_255_940"><rect x="255.0" y="940" width="150" height="44" rx="6" /></clipPath>
-<rect x="255.0" y="940" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_940)" />
-<text x="332.0" y="954.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
-<text x="332.0" y="973.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256→768 /16x</text>
+<rect x="255.0" y="214.28571428571428" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
+<clipPath id="clip_255_214"><rect x="255.0" y="214.28571428571428" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="214.28571428571428" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_214)" />
+<text x="332.0" y="228.28571428571428" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
+<text x="332.0" y="247.28571428571428" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024→1536 /16x</text>
+<rect x="255.0" y="328.57142857142856" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_255_328"><rect x="255.0" y="328.57142857142856" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="328.57142857142856" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_255_328)" />
+<text x="332.0" y="342.57142857142856" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
+<text x="332.0" y="361.57142857142856" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1536→512 n=2 /16x</text>
+<rect x="255.0" y="442.85714285714283" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_255_442"><rect x="255.0" y="442.85714285714283" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="442.85714285714283" width="5" height="44" fill="#81C784" clip-path="url(#clip_255_442)" />
+<text x="332.0" y="456.85714285714283" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">nn.Upsample</text>
+<text x="332.0" y="475.85714285714283" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /8x</text>
+<rect x="255.0" y="557.1428571428571" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
+<clipPath id="clip_255_557"><rect x="255.0" y="557.1428571428571" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="557.1428571428571" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_557)" />
+<text x="332.0" y="571.1428571428571" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
+<text x="332.0" y="590.1428571428571" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512→1024 /8x</text>
+<rect x="255.0" y="671.4285714285714" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_255_671"><rect x="255.0" y="671.4285714285714" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="671.4285714285714" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_255_671)" />
+<text x="332.0" y="685.4285714285714" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
+<text x="332.0" y="704.4285714285714" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024→256 n=2 /8x</text>
+<rect x="255.0" y="785.7142857142858" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_255_785"><rect x="255.0" y="785.7142857142858" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="785.7142857142858" width="5" height="44" fill="#64B5F6" clip-path="url(#clip_255_785)" />
+<text x="332.0" y="799.7142857142858" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Conv</text>
+<text x="332.0" y="818.7142857142858" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256c /16x</text>
+<rect x="255.0" y="900.0000000000001" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
+<clipPath id="clip_255_900"><rect x="255.0" y="900.0000000000001" width="150" height="44" rx="6" /></clipPath>
+<rect x="255.0" y="900.0000000000001" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_255_900)" />
+<text x="332.0" y="914.0000000000001" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
+<text x="332.0" y="933.0000000000001" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256→768 /16x</text>
 <rect x="555.0" y="100" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
 <clipPath id="clip_555_100"><rect x="555.0" y="100" width="150" height="44" rx="6" /></clipPath>
 <rect x="555.0" y="100" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_555_100)" />
 <text x="632.0" y="114.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
 <text x="632.0" y="133.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">768→512 n=2 /16x</text>
-<rect x="555.0" y="220" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_555_220"><rect x="555.0" y="220" width="150" height="44" rx="6" /></clipPath>
-<rect x="555.0" y="220" width="5" height="44" fill="#64B5F6" clip-path="url(#clip_555_220)" />
-<text x="632.0" y="234.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Conv</text>
-<text x="632.0" y="253.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /32x</text>
-<rect x="555.0" y="340" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
-<clipPath id="clip_555_340"><rect x="555.0" y="340" width="150" height="44" rx="6" /></clipPath>
-<rect x="555.0" y="340" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_555_340)" />
-<text x="632.0" y="354.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
-<text x="632.0" y="373.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512→1536 /32x</text>
-<rect x="555.0" y="460" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_555_460"><rect x="555.0" y="460" width="150" height="44" rx="6" /></clipPath>
-<rect x="555.0" y="460" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_555_460)" />
-<text x="632.0" y="474.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
-<text x="632.0" y="493.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1536→1024 /32x</text>
-<rect x="855.0" y="700" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_855_700"><rect x="855.0" y="700" width="150" height="44" rx="6" /></clipPath>
-<rect x="855.0" y="700" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_700)" />
-<text x="932.0" y="714.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P3/8)</text>
-<text x="932.0" y="733.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256c /8x</text>
-<rect x="855.0" y="820" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_855_820"><rect x="855.0" y="820" width="150" height="44" rx="6" /></clipPath>
-<rect x="855.0" y="820" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_820)" />
-<text x="932.0" y="834.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P4/16)</text>
-<text x="932.0" y="853.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /16x</text>
-<rect x="855.0" y="940" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
-<clipPath id="clip_855_940"><rect x="855.0" y="940" width="150" height="44" rx="6" /></clipPath>
-<rect x="855.0" y="940" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_940)" />
-<text x="932.0" y="954.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P5/32)</text>
-<text x="932.0" y="973.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024c /32x</text>
+<rect x="555.0" y="366.6666666666667" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_555_366"><rect x="555.0" y="366.6666666666667" width="150" height="44" rx="6" /></clipPath>
+<rect x="555.0" y="366.6666666666667" width="5" height="44" fill="#64B5F6" clip-path="url(#clip_555_366)" />
+<text x="632.0" y="380.6666666666667" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Conv</text>
+<text x="632.0" y="399.6666666666667" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /32x</text>
+<rect x="555.0" y="633.3333333333334" width="150" height="44" rx="6" fill="url(#grad_concat)" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
+<clipPath id="clip_555_633"><rect x="555.0" y="633.3333333333334" width="150" height="44" rx="6" /></clipPath>
+<rect x="555.0" y="633.3333333333334" width="5" height="44" fill="#FFD54F" clip-path="url(#clip_555_633)" />
+<text x="632.0" y="647.3333333333334" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Concat</text>
+<text x="632.0" y="666.3333333333334" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512→1536 /32x</text>
+<rect x="555.0" y="900.0" width="150" height="44" rx="6" fill="url(#grad_neck)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_555_900"><rect x="555.0" y="900.0" width="150" height="44" rx="6" /></clipPath>
+<rect x="555.0" y="900.0" width="5" height="44" fill="#90A4AE" clip-path="url(#clip_555_900)" />
+<text x="632.0" y="914.0" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">C3k2</text>
+<text x="632.0" y="933.0" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1536→1024 /32x</text>
+<rect x="855.0" y="660.0000000000001" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_855_660"><rect x="855.0" y="660.0000000000001" width="150" height="44" rx="6" /></clipPath>
+<rect x="855.0" y="660.0000000000001" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_660)" />
+<text x="932.0" y="674.0000000000001" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P3/8)</text>
+<text x="932.0" y="693.0000000000001" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">256c /8x</text>
+<rect x="855.0" y="780.0000000000001" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_855_780"><rect x="855.0" y="780.0000000000001" width="150" height="44" rx="6" /></clipPath>
+<rect x="855.0" y="780.0000000000001" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_780)" />
+<text x="932.0" y="794.0000000000001" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P4/16)</text>
+<text x="932.0" y="813.0000000000001" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">512c /16x</text>
+<rect x="855.0" y="900.0000000000001" width="150" height="44" rx="6" fill="url(#grad_head)" stroke="#546E7A" stroke-width="1.0" filter="url(#shadow)"/>
+<clipPath id="clip_855_900"><rect x="855.0" y="900.0000000000001" width="150" height="44" rx="6" /></clipPath>
+<rect x="855.0" y="900.0000000000001" width="5" height="44" fill="#E57373" clip-path="url(#clip_855_900)" />
+<text x="932.0" y="914.0000000000001" font-weight="bold" font-size="14" fill="#263238" text-anchor="middle" dominant-baseline="middle">Detect (P5/32)</text>
+<text x="932.0" y="933.0000000000001" font-size="10" fill="#78909C" text-anchor="middle" dominant-baseline="middle">1024c /32x</text>
 <path d="M 110.0 144 L 110.0 180" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
 <path d="M 110.0 224 L 110.0 260" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
 <path d="M 110.0 304 L 110.0 340" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
@@ -182,24 +182,24 @@
 <path d="M 110.0 784 L 110.0 820" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
 <path d="M 110.0 864 L 110.0 900" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
 <path d="M 185.0 922.0 C 220.0 922.0, 220.0 122.0, 255.0 122.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 330.0 144 L 330.0 220" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 185.0 602.0 C 220.0 602.0, 220.0 242.0, 255.0 242.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 330.0 264 L 330.0 340" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 330.0 384 L 330.0 460" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 330.0 504 L 330.0 580" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 185.0 442.0 C 220.0 442.0, 220.0 602.0, 255.0 602.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 330.0 624 L 330.0 700" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 330.0 744 L 330.0 820" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 330.0 864 L 330.0 940" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 405.0 362.0 C 465.0 362.0, 465.0 962.0, 405.0 962.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 405.0 962.0 C 480.0 962.0, 480.0 122.0, 555.0 122.0" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 630.0 144 L 630.0 220" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 630.0 264 L 630.0 340" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 185.0 922.0 C 370.0 922.0, 370.0 362.0, 555.0 362.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 630.0 384 L 630.0 460" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
-<path d="M 405.0 722.0 C 630.0 722.0, 630.0 722.0, 855.0 722.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 705.0 122.0 C 780.0 122.0, 780.0 842.0, 855.0 842.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
-<path d="M 705.0 482.0 C 780.0 482.0, 780.0 962.0, 855.0 962.0" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 330.0 144 L 330.0 214.28571428571428" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 185.0 602.0 C 220.0 602.0, 220.0 236.28571428571428, 255.0 236.28571428571428" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 330.0 258.2857142857143 L 330.0 328.57142857142856" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 330.0 372.57142857142856 L 330.0 442.85714285714283" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 330.0 486.85714285714283 L 330.0 557.1428571428571" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 185.0 442.0 C 220.0 442.0, 220.0 579.1428571428571, 255.0 579.1428571428571" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 330.0 601.1428571428571 L 330.0 671.4285714285714" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 330.0 715.4285714285714 L 330.0 785.7142857142858" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 330.0 829.7142857142858 L 330.0 900.0000000000001" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 405.0 350.57142857142856 C 465.0 350.57142857142856, 465.0 922.0000000000001, 405.0 922.0000000000001" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 405.0 922.0000000000001 C 480.0 922.0000000000001, 480.0 122.0, 555.0 122.0" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 630.0 144 L 630.0 366.6666666666667" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 630.0 410.6666666666667 L 630.0 633.3333333333334" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 185.0 922.0 C 370.0 922.0, 370.0 655.3333333333334, 555.0 655.3333333333334" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 630.0 677.3333333333334 L 630.0 900.0" stroke="#607D8B" stroke-width="1.2" fill="none"  marker-end="url(#arrow)" />
+<path d="M 405.0 693.4285714285714 C 630.0 693.4285714285714, 630.0 682.0000000000001, 855.0 682.0000000000001" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 705.0 122.0 C 780.0 122.0, 780.0 802.0000000000001, 855.0 802.0000000000001" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
+<path d="M 705.0 922.0 C 780.0 922.0, 780.0 922.0000000000001, 855.0 922.0000000000001" stroke="#607D8B" stroke-width="1.2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)" />
 <text x="110.0" y="55" font-weight="bold" font-size="18" fill="#263238" text-anchor="middle" letter-spacing="1">Backbone</text>
 <line x1="20" y1="65" x2="200" y2="65" stroke="#90A4AE" stroke-width="1"/>
 <text x="520.0" y="55" font-weight="bold" font-size="18" fill="#263238" text-anchor="middle" letter-spacing="1">Neck</text>
