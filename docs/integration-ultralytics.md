@@ -7,7 +7,7 @@ keywords: Ultralytics, YOLO26, YAML2ModelGraph, model visualization, architectur
 # Visualize YOLO Model Architectures with YAML2ModelGraph 🎨
 
 <p align="center">
-  <img width="100%" src="https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/yaml2modelgraph-overview.avif" alt="YAML2ModelGraph overview showing YOLO model architecture diagrams in Paper and Dark themes">
+  <img width="100%" src="https://raw.githubusercontent.com/WangQvQ/YAML2ModelGraph/main/svg/graph_paper.svg" alt="YAML2ModelGraph overview showing YOLO model architecture diagrams in Paper and Dark themes">
 </p>
 
 [YAML2ModelGraph](https://github.com/WangQvQ/YAML2ModelGraph) is an open-source tool that converts [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) YAML model configuration files into publication-ready SVG architecture diagrams. It automatically parses the `backbone` and `head` sections, identifies module types, and renders a clear three-lane layout — [Backbone](https://www.ultralytics.com/glossary/backbone), [Neck](https://www.ultralytics.com/glossary/feature-pyramid-network), and [Head](https://www.ultralytics.com/glossary/object-detection) — with color-coded nodes and connection paths.
@@ -85,7 +85,7 @@ The tool reads your YAML file, identifies all modules, computes layout positions
 YAML2ModelGraph ships with 9 carefully designed themes. Each theme defines colors, gradients, fonts, and type-specific strip colors for module nodes.
 
 <p align="center">
-  <img width="100%" src="https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/yaml2modelgraph-themes.avif" alt="All 9 YAML2ModelGraph themes: Paper, Candy, Dark, Ocean, Retro, Blueprint, Forest, Paper RYB, and Journal">
+  <img width="100%" src="https://raw.githubusercontent.com/WangQvQ/YAML2ModelGraph/main/svg/graph_paper_ryb.svg" alt="All 9 YAML2ModelGraph themes: Paper, Candy, Dark, Ocean, Retro, Blueprint, Forest, Paper RYB, and Journal">
 </p>
 
 | Theme | Style | Best For |
@@ -105,9 +105,9 @@ YAML2ModelGraph ships with 9 carefully designed themes. Each theme defines color
 YOLO models typically use a single `Detect` module that receives feature maps from multiple scales (P3, P4, P5). YAML2ModelGraph offers two ways to visualize this:
 
 <p align="center">
-  <img width="45%" src="https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/yaml2modelgraph-single-head.avif" alt="Single head mode showing one Detect node">
+  <img width="45%" src="https://raw.githubusercontent.com/WangQvQ/YAML2ModelGraph/main/svg/graph_paper.svg" alt="Single head mode showing one Detect node">
   &nbsp;&nbsp;
-  <img width="45%" src="https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/yaml2modelgraph-multi-head.avif" alt="Triple head mode showing three separate Detect nodes for P3, P4, and P5">
+  <img width="45%" src="https://raw.githubusercontent.com/WangQvQ/YAML2ModelGraph/main/svg/multi/graph_paper.svg" alt="Triple head mode showing three separate Detect nodes for P3, P4, and P5">
 </p>
 
 | Mode | Parameter | Description |
